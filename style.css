@@ -1,0 +1,39 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#scene{
+    position: relative;
+    width: 450px;
+    height: 600px;
+    background-color: rgb(246,246,246);
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+#bird{
+    background-image: url('/img/bird.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 30%;
+}
+#pipe1{
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    background-color: green;
+    right: 0px;
+}
+
+#pipe2{
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    bottom: 0px;
+    right: 0px;
+    background-color: green;
+}
