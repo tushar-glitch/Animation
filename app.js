@@ -8,7 +8,12 @@ var pipe1height = parseInt(window.getComputedStyle(pipe1).getPropertyValue("heig
 var pipe2height = parseInt(window.getComputedStyle(pipe2).getPropertyValue("height"));
 var isGameOver = 1;
 var score = 0;
-
+var highscore = 0;
+window.onload = function () {
+  highscore = localStorage.getItem("score");
+  var a = document.getElementById("hiscore");
+  a.innerText = highscore;
+}
 // Function to move pipes
 function movePipe() {
   // birdleft is 180 && birdright is 220
@@ -36,17 +41,23 @@ function movePipe() {
     console.log("Gameover!!");
     clearInterval(movepipe);
     clearInterval(movebird);
+    if (score > highscore) {
+      localStorage.setItem("score", score);
+    }
     isGameOver = 0;
   }
-  if ((pipe1right+60)>=219&&(pipe1right+60)<=270) {
+  if ((pipe1right+55)>=219&&(pipe1right+60)<=320) {
     if ((birdtop < (600 - pipe1down - 5)) || (birddown < pipe2top - 20)) {
       console.log("Gameover!!");
       clearInterval(movepipe);
       clearInterval(movebird);
+      if (score > highscore) {
+      localStorage.setItem("score", score);
+    }
       isGameOver = 0;
     }
   }
-  else if ((pipe1right + 60) == 273) {
+  else if ((pipe1right + 60) == 321) {
     score++;
     console.log(score);
     var s = document.getElementById('score');
