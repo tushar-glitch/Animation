@@ -6,16 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#">
     <title>Flappy-Bird</title>
 </head>
 
 <body>
-        <div class="scores">
-            <div class="top1">Score: <span id="score">0</span></div>
-            <div class="top1">HI: <span id="hiscore">0</span></div>
-        </div>
-    <div id="scene">
+    <!-- Scores -->
+    <div class="scores">
+        <div class="top1">Score: <span id="score">0</span></div>
+        <div class="top1">HI: <span id="hiscore">0</span></div>
+    </div>
 
+    <!-- Board -->
+    <div id="scene">
+        <div id="back-img"></div>
         <div class="pipe">
             <div id="pipe1"></div>
             <div id="pipe2"></div>
@@ -23,6 +27,9 @@
 
         <div id="bird"></div>
     </div>
+
+    <!-- ToogleBtn -->
+    <div id="toggle" onclick="togglemode()"></div>
 </body>
 <script src="app.js"></script>
 

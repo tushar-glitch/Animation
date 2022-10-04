@@ -1,8 +1,16 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: white;
 }
-html, body {margin: 0; height: 100%; overflow: hidden}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
 #scene {
     position: relative;
     width: 450px;
@@ -11,17 +19,26 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     margin: 40px auto;
     overflow: hidden;
     top: -150px;
+    border-radius: 5%;
+    background-color: rgb(60, 60, 60);
 }
 
+
 #bird {
-    background-image: url('/img/bird.png');
+    background-image: url('/img/noup-removebg-preview.png');
     background-repeat: no-repeat;
     background-size: contain;
+    filter: drop-shadow(8px 8px 8px black);
     width: 50px;
     height: 50px;
     position: absolute;
     bottom: 300px;
     left: 40%;
+}
+
+#back-img {
+    background-image: url('/img/background.jpg');
+    background-size: contain;
 }
 
 #pipe1 {
@@ -32,6 +49,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     right: 0px;
     top: 0px;
     background-image: url('/img/flappybird-pipe.png');
+    box-shadow: -8px 0px 20px;
     background-repeat: no-repeat;
     transform: rotate(180deg);
 }
@@ -44,11 +62,13 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     right: 0px;
     background-color: green;
     background-image: url('/img/flappybird-pipe.png');
+    filter: drop-shadow(8px 8px 8px black);
     background-repeat: no-repeat;
 }
 
 .top1 {
     font-size: 4rem;
+    color: rgb(37, 37, 37);
 }
 
 .scores {
@@ -56,4 +76,16 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     position: relative;
     top: 300px;
     left: 200px;
+}
+
+#toggle{
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    background-image: url('/img/sun.avif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    top: -800px;
+    left: 1300px;
 }
