@@ -1,17 +1,26 @@
+
 var pipe1 = document.getElementById("pipe1");
 var pipe2 = document.getElementById("pipe2");
 var bird = document.getElementById("bird");
 var movepipe = setInterval(movePipe, 5);
-var movebird = setInterval(moveBird, 10)
-let pos = 0;
+var movebird = setInterval(moveBird, 10);
+var pipe1right = parseInt(window.getComputedStyle(pipe1).getPropertyValue("right"));
+var pipe1left = parseInt(window.getComputedStyle(pipe1).getPropertyValue("left"));
+var birdtop = parseInt(window.getComputedStyle(bird).getPropertyValue("top"));
+var birddown = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
+var isGameOver = 1;
+
+var pos = 0;
+var j = 0;
 var pipe1height = parseInt(window.getComputedStyle(pipe1).getPropertyValue("height"));
 var pipe2height = parseInt(window.getComputedStyle(pipe2).getPropertyValue("height"));
-var isGameOver = 1;
 var score = 0;
 var highscore = 0;
+var i = 0;
 var body = document.querySelector('body');
 var scene = document.getElementById('scene');
 var score_list = document.getElementsByClassName('top1');
+
 
 window.onload = function () {
   highscore = localStorage.getItem("score");
@@ -20,15 +29,14 @@ window.onload = function () {
 }
 // Function to move pipes
 function movePipe() {
-  // birdleft is 180 && birdright is 220
   if (pos == 450) {
     pos = -20;
     pipe1height = Math.floor((Math.random() * 450));
     pipe2height = 450 - pipe1height;
     pipe1.style.height = pipe1height + "px";
     pipe2.style.height = pipe2height + "px";
-
-  } else {
+  }
+  else {
     pos++;
     pipe1.style.right = pos + 'px';
     pipe2.style.right = pos + 'px';
@@ -41,10 +49,9 @@ function movePipe() {
   var pipe1left = parseInt(window.getComputedStyle(pipe1).getPropertyValue("left"));
   var birdtop = parseInt(window.getComputedStyle(bird).getPropertyValue("top"));
   var birddown = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
-  if (birddown == -15) {
+  if (birddown == 63) {
     let Gameover = new Audio("/audio/hit.wav");
     Gameover.play();
-    console.log("afdaf");
     clearInterval(movepipe);
     clearInterval(movebird);
     if (score > highscore) {
@@ -87,9 +94,35 @@ function moveBird() {
 document.onkeydown = function (e) {
   if (e.keyCode == 32 && isGameOver) {
     var currentbirdpos = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
-    bird.style.bottom = (currentbirdpos + 90) + "px";
+    // bird.style.bottom = (currentbirdpos + 90) + "px";
+    console.log("asdfasdfasdf");
+    var temp = setInterval(jump, 1);
+    function jump() {
+      if ((pipe1right + 55) >= 219 && (pipe1right + 60) <= 320) {
+        if ((birdtop < (600 - pipe1down - 5)) || (birddown < pipe2top - 20)) {
+          console.log("Gameover!!");
+          clearInterval(movepipe);
+          clearInterval(movebird);
+          clearInterval(temp);
+          if (score > highscore) {
+            localStorage.setItem("score", score);
+          }
+          isGameOver = 0;
+          let Gameover = new Audio("/audio/hit.wav");
+          Gameover.play();
+        }
+      }
+      j++;
+      // var currentbirdpos = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
+      bird.style.bottom = (currentbirdpos + j) + "px";
+      if (j > 100) {
+        j = 0;
+        clearInterval(temp);
+      }
+    }
     var imgsrc = document.getElementById("bird");
     imgsrc.style.backgroundImage = "url(/img/up-removebg-preview.png)";
+    isGameOver = 1;
   }
 }
 document.onkeyup = function (e) {
@@ -101,9 +134,6 @@ document.onkeyup = function (e) {
 
 //Toggling of dark and light mode
 function togglemode() {
-  // if (window.getComputedStyle(body).getPropertyValue('background-color')) {
-  //   console.log("asdf");
-  // }
   if (window.getComputedStyle(body).getPropertyValue('background-color') == 'rgb(255, 255, 255)') {
     body.style.backgroundColor = 'rgb(37, 37, 37)';
     scene.style.backgroundColor = 'white';
@@ -123,3 +153,14 @@ function togglemode() {
     }
   }
 }
+
+//Function to move background base
+setInterval(moveimage, 5);
+function moveimage() {
+  if (isGameOver) {
+    i -= 0.5;
+    document.getElementById('base').style.backgroundPosition = i + "px";
+  }
+}
+
+

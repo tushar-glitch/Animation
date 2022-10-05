@@ -18,7 +18,7 @@ body {
     background-color: rgb(246, 246, 246);
     margin: 40px auto;
     overflow: hidden;
-    top: -150px;
+    top: -200px;
     border-radius: 5%;
     background-color: rgb(60, 60, 60);
 }
@@ -29,16 +29,30 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     filter: drop-shadow(8px 8px 8px black);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     position: absolute;
     bottom: 300px;
     left: 40%;
+    z-index: 100;
 }
 
-#back-img {
-    background-image: url('/img/background.jpg');
+#sky{
+    width: 100%;
+    height: 530px;
+    position: absolute;
+    top: 0px;
+    background-image: url('/img/sky-1.png');
     background-size: contain;
+}
+#base{
+    width: 100%;
+    height: 75px;
+    position: absolute;
+    bottom: 0px;
+    background-image: url('/img/base-1.png');
+    background-size: contain;
+z-index: 200;
 }
 
 #pipe1 {
@@ -46,12 +60,13 @@ body {
     width: 60px;
     height: 225px;
     background-color: green;
-    right: 0px;
-    top: 0px;
-    background-image: url('/img/flappybird-pipe.png');
+    /* left: 400px; */
+    background-image: url('/img/pipe-1-1.png');
+/* background-color: red; */
     box-shadow: -8px 0px 20px;
     background-repeat: no-repeat;
     transform: rotate(180deg);
+    z-index: 100;
 }
 
 #pipe2 {
@@ -61,14 +76,17 @@ body {
     bottom: 0px;
     right: 0px;
     background-color: green;
-    background-image: url('/img/flappybird-pipe.png');
+    background-image: url('/img/pipe-1-1.png');
+/* background-color: red; */
     filter: drop-shadow(8px 8px 8px black);
     background-repeat: no-repeat;
+z-index: 100;
 }
 
 .top1 {
     font-size: 4rem;
     color: rgb(37, 37, 37);
+    font-family: 'Baloo 2', cursive;
 }
 
 .scores {
