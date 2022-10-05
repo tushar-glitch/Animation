@@ -50,7 +50,7 @@ function movePipe() {
   var birdtop = parseInt(window.getComputedStyle(bird).getPropertyValue("top"));
   var birddown = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
   if (birddown == 63) {
-    let Gameover = new Audio("/audio/hit.wav");
+    let Gameover = new Audio("./audio/hit.wav");
     Gameover.play();
     clearInterval(movepipe);
     clearInterval(movebird);
@@ -69,7 +69,7 @@ function movePipe() {
         localStorage.setItem("score", score);
       }
       isGameOver = 0;
-      let Gameover = new Audio("/audio/hit.wav");
+      let Gameover = new Audio("./audio/hit.wav");
       Gameover.play();
     }
   }
@@ -77,7 +77,7 @@ function movePipe() {
     score++;
     var s = document.getElementById('score');
     s.innerText = score;
-    let point = new Audio("/audio/point.wav");
+    let point = new Audio("./audio/point.wav");
     point.play();
   }
 }
@@ -94,8 +94,6 @@ function moveBird() {
 document.onkeydown = function (e) {
   if (e.keyCode == 32 && isGameOver) {
     var currentbirdpos = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
-    // bird.style.bottom = (currentbirdpos + 90) + "px";
-    console.log("asdfasdfasdf");
     var temp = setInterval(jump, 1);
     function jump() {
       if ((pipe1right + 55) >= 219 && (pipe1right + 60) <= 320) {
@@ -108,7 +106,7 @@ document.onkeydown = function (e) {
             localStorage.setItem("score", score);
           }
           isGameOver = 0;
-          let Gameover = new Audio("/audio/hit.wav");
+          let Gameover = new Audio("./audio/hit.wav");
           Gameover.play();
         }
       }
@@ -121,14 +119,14 @@ document.onkeydown = function (e) {
       }
     }
     var imgsrc = document.getElementById("bird");
-    imgsrc.style.backgroundImage = "url(/img/up-removebg-preview.png)";
+    imgsrc.style.backgroundImage = "url(./img/up-removebg-preview.png)";
     isGameOver = 1;
   }
 }
 document.onkeyup = function (e) {
   if (e.keyCode == 32) {
     var imgsrc = document.getElementById("bird");
-    imgsrc.style.backgroundImage = "url(/img/noup-removebg-preview.png)";
+    imgsrc.style.backgroundImage = "url(./img/noup-removebg-preview.png)";
   }
 }
 
@@ -141,7 +139,7 @@ function togglemode() {
       score_list[i].style.color = 'white';
     }
     var toggle = document.getElementById('toggle');
-    toggle.style.backgroundImage = "url(/img/moon.jpg)";
+    toggle.style.backgroundImage = "url(./img/moon.jpg)";
   }
   else {
     body.style.backgroundColor = 'white';
@@ -149,7 +147,7 @@ function togglemode() {
     for (let i = 0; i < score_list.length; ++i) {
       score_list[i].style.color = 'rgb(37, 37, 37)';
       var toggle = document.getElementById('toggle');
-      toggle.style.backgroundImage = "url(/img/sun.avif)";
+      toggle.style.backgroundImage = "url(./img/sun.avif)";
     }
   }
 }

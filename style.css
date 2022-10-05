@@ -8,7 +8,7 @@ html,
 body {
     margin: 0;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #scene {
@@ -17,7 +17,7 @@ body {
     height: 600px;
     background-color: rgb(246, 246, 246);
     margin: 40px auto;
-    overflow: hidden;
+    /* overflow: hidden; */
     top: -200px;
     border-radius: 5%;
     background-color: rgb(60, 60, 60);
@@ -25,7 +25,7 @@ body {
 
 
 #bird {
-    background-image: url('/img/noup-removebg-preview.png');
+    background-image: url('./img/noup-removebg-preview.png');
     background-repeat: no-repeat;
     background-size: contain;
     filter: drop-shadow(8px 8px 8px black);
@@ -42,7 +42,7 @@ body {
     height: 530px;
     position: absolute;
     top: 0px;
-    background-image: url('/img/sky-1.png');
+    background-image: url('./img/sky-1.png');
     background-size: contain;
 }
 #base{
@@ -50,7 +50,7 @@ body {
     height: 75px;
     position: absolute;
     bottom: 0px;
-    background-image: url('/img/base-1.png');
+    background-image: url('./img/base-1.png');
     background-size: contain;
 z-index: 200;
 }
@@ -61,7 +61,7 @@ z-index: 200;
     height: 225px;
     background-color: green;
     /* left: 400px; */
-    background-image: url('/img/pipe-1-1.png');
+    background-image: url('./img/pipe-1-1.png');
 /* background-color: red; */
     box-shadow: -8px 0px 20px;
     background-repeat: no-repeat;
@@ -76,7 +76,7 @@ z-index: 200;
     bottom: 0px;
     right: 0px;
     background-color: green;
-    background-image: url('/img/pipe-1-1.png');
+    background-image: url('./img/pipe-1-1.png');
 /* background-color: red; */
     filter: drop-shadow(8px 8px 8px black);
     background-repeat: no-repeat;
@@ -106,4 +106,22 @@ z-index: 100;
     position: relative;
     top: -800px;
     left: 1300px;
+}
+
+#live-counter{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    top: -700px;
+    left: 1100px;
+    color: aquamarine;
+    font-size: 3rem;
+}
+
+#live1{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
 }
