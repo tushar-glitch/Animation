@@ -9,6 +9,7 @@ var pipe1left = parseInt(window.getComputedStyle(pipe1).getPropertyValue("left")
 var birdtop = parseInt(window.getComputedStyle(bird).getPropertyValue("top"));
 var birddown = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
 var isGameOver = 1;
+var gameover = document.getElementById('gameover')
 
 var pos = 0;
 var j = 0;
@@ -54,6 +55,10 @@ function movePipe() {
     Gameover.play();
     clearInterval(movepipe);
     clearInterval(movebird);
+    gameover.style.display = "block";
+    setTimeout(() => {
+            window.location.reload();
+          }, 2000);
     if (score > highscore) {
       localStorage.setItem("score", score);
     }
@@ -62,9 +67,12 @@ function movePipe() {
   }
   if ((pipe1right + 55) >= 219 && (pipe1right + 60) <= 320) {
     if ((birdtop < (600 - pipe1down - 5)) || (birddown < pipe2top - 20)) {
-      console.log("Gameover!!");
       clearInterval(movepipe);
       clearInterval(movebird);
+      gameover.style.display = "block";
+      setTimeout(() => {
+            window.location.reload();
+          }, 2000);
       if (score > highscore) {
         localStorage.setItem("score", score);
       }
@@ -92,16 +100,19 @@ function moveBird() {
 
 //Spacebar button function
 document.onkeydown = function (e) {
-  if (e.keyCode == 32 && isGameOver) {
+  if ((e.keyCode == 32||e.keyCode==38) && isGameOver) {
     var currentbirdpos = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
     var temp = setInterval(jump, 1);
     function jump() {
       if ((pipe1right + 55) >= 219 && (pipe1right + 60) <= 320) {
         if ((birdtop < (600 - pipe1down - 5)) || (birddown < pipe2top - 20)) {
-          console.log("Gameover!!");
           clearInterval(movepipe);
           clearInterval(movebird);
           clearInterval(temp);
+          gameover.style.display = "block";
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
           if (score > highscore) {
             localStorage.setItem("score", score);
           }
@@ -111,7 +122,6 @@ document.onkeydown = function (e) {
         }
       }
       j++;
-      // var currentbirdpos = parseInt(window.getComputedStyle(bird).getPropertyValue("bottom"));
       bird.style.bottom = (currentbirdpos + j) + "px";
       if (j > 100) {
         j = 0;
@@ -124,7 +134,7 @@ document.onkeydown = function (e) {
   }
 }
 document.onkeyup = function (e) {
-  if (e.keyCode == 32) {
+  if (e.keyCode == 32||e.keyCode==38) {
     var imgsrc = document.getElementById("bird");
     imgsrc.style.backgroundImage = "url(./img/noup-removebg-preview.png)";
   }
